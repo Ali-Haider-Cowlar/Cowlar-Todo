@@ -1,0 +1,19 @@
+div.backgroundImage {
+  background-repeat: "no-repeat";
+  position: "absolute";
+  display: "relative";
+  filter: "blur(3px)";
+  opacity: 0.6;
+  height: "100%";
+  width: "100%";
+}
+Button.addTaskButton {
+  color: #bddbd3;
+  background-color: #5a7d78;
+}
+.ListItemText {
+  color: #595554;
+}
+.InputBase {
+  color: Yellow;
+}
