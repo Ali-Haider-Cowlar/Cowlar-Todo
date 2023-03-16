@@ -1,0 +1,50 @@
+version: '3'
+services:
+  front:
+    build:
+      context: './Cowlar-Task-MERN-Stack-Frontend'
+      dockerfile: Dockerfile
+    ports:
+      - 3000:3000
+    container_name: react-container
+    environment:
+      - WATCHPACK_POLLING=true
+    networks:
+      - mern-stack-network
+    volumes:
+      - ./Cowlar-Task-MERN-Stack-Frontend:/app
+    depends_on:
+      - backend
+  backend:
+    build:
+      context: './Cowlar-Task-MERN-Stack-Backend'
+      dockerfile: Dockerfile
+    ports:
+      - 5500:5500
+    container_name: express-container
+    networks:
+      - mern-stack-network
+    volumes:
+      - ./Cowlar-Task-MERN-Stack-Backend:/app
+    depends_on:
+      - mongo
+  mongo:
+    image: mongo
+    ports:
+      - 27017:27017
+    container_name: mongo-container
+    networks:
+      - mern-stack-network
+    volumes:
+      - mongoData:/data/db
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=Cowlar_Todo1
+      - MONGO_INITDB_ROOT_PASSWORD=cowlar123
+      - MONGO_INITDB_DATABASE=test
+networks:
+  mern-stack-network:
+volumes:
+  mongoData:
+
+
+
