@@ -1,5 +1,5 @@
 <div align="center" id="top">
-  <img src="https://github.com/AliHaider18/Cowlar-Todo/tree/main/Cowlar-Task-MERN-Stack-Frontend/src/img/app.png" width="900" alt="Cowlar Todo App" />
+  <img src="https://github.com/AliHaider18/Cowlar-Todo/Cowlar-Task-MERN-Stack-Frontend/src/img/app.png" width="900" alt="Cowlar Todo App" />
 </div>
 
 <div align="center">
