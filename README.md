@@ -1,5 +1,6 @@
 <div align="center" id="top">
-  <img src="https://ibb.co/MfDDtG5" width="900" alt="Cowlar Todo App" />
+
+<a href="https://ibb.co/MfDDtG5"><img src="https://i.ibb.co/w7NNPwr/To-do-app-testing.png" alt="To-do-app-testing" border="0" /></a>
 </div>
 
 <div align="center">
@@ -45,11 +46,11 @@ So why wait? Start using the **Cowlar Todo App** today and discover the power of
 
 <a href="https://rome.tools">
   <img width="50" title="Rome" alt="Rome Logo" src="https://seeklogo.com/images/R/rome-logo-73FC51E1CE-seeklogo.com.png">
-</a>
+</a>  &#xa0; &#xa0;
 
 <a href="http://docker.com">
   <img width="50" title="Docker" alt="Docker Logo" src="https://cdn.icon-icons.com/icons2/2699/PNG/512/docker_tile_logo_icon_168248.png">
-</a>
+</a>  &#xa0; &#xa0;
 
 ###
 
