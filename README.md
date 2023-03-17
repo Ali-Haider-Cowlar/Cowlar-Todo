@@ -1,5 +1,5 @@
 <div align="center" id="top">
-  <img src="https://i.ibb.co/w7NNPwr/To-do-app-testing.png" width="900" alt="Cowlar Todo App" />
+  <img src="https://ibb.co/MfDDtG5" width="900" alt="Cowlar Todo App" />
 </div>
 
 <div align="center">
@@ -48,7 +48,7 @@ So why wait? Start using the **Cowlar Todo App** today and discover the power of
 </a>
 
 <a href="http://docker.com">
-  <img width="50" title="Docker" alt="Docker Logo" src="https://photos5.appleinsider.com/gallery/41416-80356-heeder-l.jpg">
+  <img width="50" title="Docker" alt="Docker Logo" src="https://cdn.icon-icons.com/icons2/2699/PNG/512/docker_tile_logo_icon_168248.png">
 </a>
 
 ###
