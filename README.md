@@ -1,5 +1,6 @@
 <div align="center" id="top">
-  <img src="./Cowlar-Task-MERN-Stack-Frontend/src/img/app.png" width="900" alt="Cowlar Todo App" />
+
+<a href="https://ibb.co/MfDDtG5"><img src="https://i.ibb.co/w7NNPwr/To-do-app-testing.png" alt="To-do-app-testing" border="0" /></a>
 </div>
 
 <div align="center">
@@ -15,7 +16,7 @@
 
 ## :dart: About ##
 
-A todo app designed to help you stay organized and on top of your tasks. Now, you can easily create lists of things to do andtrack your progress as you work towards completing your goals.
+A todo app designed to help you stay organized and on top of your tasks. Now, you can easily create lists of things to do and track your progress as you work towards completing your goals.
 With the user-friendly interface and intuitive features, you can quickly add new tasks and mark them as completed once you've finished.
 So why wait? Start using the **Cowlar Todo App** today and discover the power of a well-organized life!
 
@@ -24,7 +25,7 @@ So why wait? Start using the **Cowlar Todo App** today and discover the power of
 ## :rocket: Main Technologies ##
 
 <a href="https://reactjs.org">
-  <img width="50" title="ReactJs" alt="React Logo" src="https://w7.pngwing.com/pngs/403/269/png-transparent-react-react-native-logos-brands-in-colors-icon-thumbnail.png">
+  <img width="50" title="ReactJs" alt="React Logo" src="https://daily-dev-tips.com/ezoimgfmt/cdn.hashnode.com/res/hashnode/image/upload/v1647492266631/rH6yDfWyJ.png">
 </a> &#xa0; &#xa0;
 
 <a href="https://mui.com">
@@ -32,7 +33,7 @@ So why wait? Start using the **Cowlar Todo App** today and discover the power of
 </a> &#xa0; &#xa0;
 
 <a href="https://expressjs.com">
-  <img width="50" title="ExpressJs" alt="ExpressJs Logo" src="https://w7.pngwing.com/pngs/925/447/png-transparent-express-js-node-js-javascript-mongodb-node-js-text-trademark-logo.png">
+  <img width="50" title="ExpressJs" alt="ExpressJs Logo" src="https://ih1.redbubble.net/image.438908244.6144/st,small,507x507-pad,600x600,f8f8f8.u2.jpg">
 </a> &#xa0; &#xa0;
 
 <a href="https://jestjs.io">
@@ -45,11 +46,11 @@ So why wait? Start using the **Cowlar Todo App** today and discover the power of
 
 <a href="https://rome.tools">
   <img width="50" title="Rome" alt="Rome Logo" src="https://seeklogo.com/images/R/rome-logo-73FC51E1CE-seeklogo.com.png">
-</a>
+</a>  &#xa0; &#xa0;
 
 <a href="http://docker.com">
-  <img width="50" title="Docker" alt="Docker Logo" src="https://w7.pngwing.com/pngs/219/411/png-transparent-docker-logo-kubernetes-microservices-cloud-computing-dockers-logo-text-logo-cloud-computing.png">
-</a>
+  <img width="50" title="Docker" alt="Docker Logo" src="https://cdn.icon-icons.com/icons2/2699/PNG/512/docker_tile_logo_icon_168248.png">
+</a>  &#xa0; &#xa0;
 
 ###
 
