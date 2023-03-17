@@ -1,5 +1,5 @@
 <div align="center" id="top">
-  <img src="https://github.com/AliHaider18/Cowlar-Todo/Cowlar-Task-MERN-Stack-Frontend/src/img/app.png" width="900" alt="Cowlar Todo App" />
+  <img src="https://i.ibb.co/yyvQDJ9/todo-app.png" width="900" alt="Cowlar Todo App" />
 </div>
 
 <div align="center">
@@ -24,7 +24,7 @@ So why wait? Start using the **Cowlar Todo App** today and discover the power of
 ## :rocket: Main Technologies ##
 
 <a href="https://reactjs.org">
-  <img width="50" title="ReactJs" alt="React Logo" src="https://w7.pngwing.com/pngs/403/269/png-transparent-react-react-native-logos-brands-in-colors-icon-thumbnail.png">
+  <img width="50" title="ReactJs" alt="React Logo" src="https://www.patterns.dev/img/reactjs/react-logo@3x.svg">
 </a> &#xa0; &#xa0;
 
 <a href="https://mui.com">
@@ -32,7 +32,7 @@ So why wait? Start using the **Cowlar Todo App** today and discover the power of
 </a> &#xa0; &#xa0;
 
 <a href="https://expressjs.com">
-  <img width="50" title="ExpressJs" alt="ExpressJs Logo" src="https://w7.pngwing.com/pngs/925/447/png-transparent-express-js-node-js-javascript-mongodb-node-js-text-trademark-logo.png">
+  <img width="50" title="ExpressJs" alt="ExpressJs Logo" src="https://initialcommit.com/img/initialcommit/beginners-guide-to-using-express-js-and-node-js-framework.png">
 </a> &#xa0; &#xa0;
 
 <a href="https://jestjs.io">
@@ -48,7 +48,7 @@ So why wait? Start using the **Cowlar Todo App** today and discover the power of
 </a>
 
 <a href="http://docker.com">
-  <img width="50" title="Docker" alt="Docker Logo" src="https://w7.pngwing.com/pngs/219/411/png-transparent-docker-logo-kubernetes-microservices-cloud-computing-dockers-logo-text-logo-cloud-computing.png">
+  <img width="50" title="Docker" alt="Docker Logo" src="https://photos5.appleinsider.com/gallery/41416-80356-heeder-l.jpg">
 </a>
 
 ###
