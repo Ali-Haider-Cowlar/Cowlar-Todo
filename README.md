@@ -1,7 +1,5 @@
 <div align="center" id="top">
-   <a href="https://ibb.co/MfDDtG5"
   <img src="https://i.ibb.co/w7NNPwr/To-do-app-testing.png" width="900" alt="Cowlar Todo App" />
-  </a>
 </div>
 
 <div align="center">
