@@ -5,10 +5,8 @@ services:
       context: './Cowlar-Task-MERN-Stack-Frontend'
       dockerfile: Dockerfile
     ports:
-      - 3000:3000
+      - "3000:5000"
     container_name: react-container
-    environment:
-      - WATCHPACK_POLLING=true
     networks:
       - mern-stack-network
     volumes:
@@ -20,7 +18,7 @@ services:
       context: './Cowlar-Task-MERN-Stack-Backend'
       dockerfile: Dockerfile
     ports:
-      - 5500:5500
+      - "5000:5000"
     container_name: express-container
     networks:
       - mern-stack-network
@@ -31,7 +29,7 @@ services:
   mongo:
     image: mongo
     ports:
-      - 27017:27017
+      - "27017:27017"
     container_name: mongo-container
     networks:
       - mern-stack-network

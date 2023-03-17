@@ -3,6 +3,9 @@ const mongoose = require("mongoose");
 const router = require("./routes/task-routes");
 const userrouter = require("./routes/task-routes");
 
+const portNumber = 5000;
+
+
 const cors = require("cors");
 const app = express();
 
@@ -21,6 +24,8 @@ mongoose
 	)
 	.then(() => console.log("Connected To Database"))
 	.then(() => {
-		app.listen(5000);
+		app.listen(portNumber, "0.0.0.0", () => {
+			console.log(`Express web server started: http://0.0.0.0:${portNumber}`);
+		  });
 	})
 	.catch((err) => console.log(err));

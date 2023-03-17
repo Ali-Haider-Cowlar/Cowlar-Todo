@@ -30,7 +30,15 @@ const Home = () => {
 					<Button
 						LinkComponent={Link}
 						to="/tasks"
-						sx={{ marginTop: 15, background: "darkblue" }}
+						sx={{
+							color: "#bddbd3",
+							bgcolor: "#5a7d78",
+							marginTop: 15,
+							":hover": {
+								bgcolor: "#5b7e78",
+								color: "white",
+							},
+						}}
 						variant="contained"
 					>
 						<Typography variant="h4">View All Tasks</Typography>
