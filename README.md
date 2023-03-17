@@ -16,7 +16,7 @@
 
 ## :dart: About ##
 
-A todo app designed to help you stay organized and on top of your tasks. Now, you can easily create lists of things to do andtrack your progress as you work towards completing your goals.
+A todo app designed to help you stay organized and on top of your tasks. Now, you can easily create lists of things to do and track your progress as you work towards completing your goals.
 With the user-friendly interface and intuitive features, you can quickly add new tasks and mark them as completed once you've finished.
 So why wait? Start using the **Cowlar Todo App** today and discover the power of a well-organized life!
 
