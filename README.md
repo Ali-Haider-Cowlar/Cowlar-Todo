@@ -1,5 +1,7 @@
 <div align="center" id="top">
-  <img src="https://i.ibb.co/yyvQDJ9/todo-app.png" width="900" alt="Cowlar Todo App" />
+   <a href="https://ibb.co/MfDDtG5"
+  <img src="https://i.ibb.co/w7NNPwr/To-do-app-testing.png" width="900" alt="Cowlar Todo App" />
+  </a>
 </div>
 
 <div align="center">
@@ -24,7 +26,7 @@ So why wait? Start using the **Cowlar Todo App** today and discover the power of
 ## :rocket: Main Technologies ##
 
 <a href="https://reactjs.org">
-  <img width="50" title="ReactJs" alt="React Logo" src="https://www.patterns.dev/img/reactjs/react-logo@3x.svg">
+  <img width="50" title="ReactJs" alt="React Logo" src="https://daily-dev-tips.com/ezoimgfmt/cdn.hashnode.com/res/hashnode/image/upload/v1647492266631/rH6yDfWyJ.png">
 </a> &#xa0; &#xa0;
 
 <a href="https://mui.com">
@@ -32,7 +34,7 @@ So why wait? Start using the **Cowlar Todo App** today and discover the power of
 </a> &#xa0; &#xa0;
 
 <a href="https://expressjs.com">
-  <img width="50" title="ExpressJs" alt="ExpressJs Logo" src="https://initialcommit.com/img/initialcommit/beginners-guide-to-using-express-js-and-node-js-framework.png">
+  <img width="50" title="ExpressJs" alt="ExpressJs Logo" src="https://ih1.redbubble.net/image.438908244.6144/st,small,507x507-pad,600x600,f8f8f8.u2.jpg">
 </a> &#xa0; &#xa0;
 
 <a href="https://jestjs.io">
