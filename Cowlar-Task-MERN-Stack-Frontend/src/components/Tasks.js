@@ -23,7 +23,6 @@ import Alert from "@mui/material/Alert";
 
 //Importing from directory
 import "./Tasks.css";
-import backgroundImg from "../img/Background.jpeg";
 import bitmapImg from "../img/Bitmap.jpg";
 
 //Get All Tasks API Call
@@ -114,36 +113,21 @@ const Tasks = () => {
 
   return (
     <div>
-      <div
-        className="backgroundImage"
-        style={{
-          backgroundImage: `url(${backgroundImg})`,
-          backgroundRepeat: "no-repeat",
-          position: "absolute",
-          filter: "brightness(80%) blur(1px)",
-          opacity: 0.8,
-          backdropFilter: "brightness(80%) blur(1px)",
-          backgroundSize: "cover",
-          backgroundPosition: "center center",
-          height: "90vh",
-          width: "100vw",
-        }}
-      ></div>
+      <div className="backgroundImage" />
 
       <div>
         <Box display="flex" flexDirection="column" alignItems="center">
           <div
             className="avatar-person"
-            style={{ height: 60, width: 60, marginTop: 30 }}
+            style={{ height: 60, width: 60, marginTop: "90px" }}
           >
             <Avatar
+              className="avatar"
               alt="Ali Haider"
               src={bitmapImg}
               style={{
                 height: "100%",
                 width: "100%",
-                border: "2px solid #555",
-                filter: "blur(1px)",
               }}
             />
           </div>
@@ -151,26 +135,17 @@ const Tasks = () => {
           <br />
           <Paper
             component="form"
+            className="paper"
             value={input}
             onChange={handleChange}
             onSubmit={onSubmit}
-            sx={{
-              display: "flex",
-              width: 260,
-              background:
-                "linear-gradient(10deg,	 rgb(255, 255, 255) 0%,	rgb(224, 224, 224) 100%",
-              padding: "6px",
-              color: "#e9e3d7",
-              backdropFilter: "blur(1px)",
-              borderRadius: "10px",
-              boxShadow: "2px 2px 8px #424242, -0px -1.5px 4px #f6f6f6",
-            }}
+            elevation={3}
           >
             <IconButton sx={{ p: "10px" }} aria-label="menu">
               <MenuIcon />
             </IconButton>
             <InputBase
-              sx={{ ml: 1, flex: 1 }}
+              sx={{ ml: 1, flex: 1, color: "#595554" }}
               placeholder="To do today"
               inputProps={{ "aria-label": "To do today" }}
             />
@@ -184,35 +159,11 @@ const Tasks = () => {
           </Paper>
 
           <br />
-          {toggleList==true ? (
+          {toggleList === true ? (
             <List
+              className="list"
               sx={{
-                width: "100%",
-                height: "100%",
-                maxHeight: "300px",
-                maxWidth: 260,
-                bgcolor: "white",
-                borderRadius: 3,
-                opacity: 0.8,
                 padding: 0.2,
-                overflowY: "scroll",
-                "&::-webkit-scrollbar": {
-                  width: "8px",
-                  backgroundColor: "#f5f5f5",
-                },
-                "&::-webkit-scrollbar-thumb": {
-                  backgroundColor: "#aaa",
-                  borderRadius: "10px",
-                  "&:hover": {
-                    backgroundColor: "#999",
-                  },
-                },
-                "&::-webkit-scrollbar-track": {
-                  backgroundColor: "#f5f5f5",
-                  borderRadius: "10px",
-                  boxShadow: "inset 0 0 6px rgba(0, 0, 0, 0.3)",
-                },
-                background: "linear-gradient(to bottom, #fff 0%, #f5f5f5 100%)",
               }}
               component="nav"
               display="flex"
@@ -271,7 +222,7 @@ const Tasks = () => {
                   </>
                 ))
               ) : (
-                <div />
+                <></>
               )}
             </List>
           ) : (
@@ -284,8 +235,10 @@ const Tasks = () => {
               data-testid="taskButton"
               className="addTaskButton"
               variant="contained"
+              elevation={3}
               sx={{
                 minWidth: 260,
+                boxShadow: "2px 2px 8px #424242, 0px -1.5px 4px #355A54;",
                 ":hover": {
                   bgcolor: "#5b7e78",
                   color: "white",
