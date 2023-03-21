@@ -24,7 +24,6 @@ import Alert from "@mui/material/Alert";
 //Importing from directory
 import "./Tasks.css";
 import bitmapImg from "../img/Bitmap.jpg";
-import { display } from "@mui/system";
 
 //Get All Tasks API Call
 const URL = "http://localhost:5000/task";
@@ -101,7 +100,7 @@ const Tasks = () => {
 
   //Add Task with AddTask Button
   const addTask = () => async () => {
-    if ((input != "") | null) {
+    if ((input !== "") | null) {
       await axios
         .post("http://localhost:5000/task", {
           task_Name: String(input),
