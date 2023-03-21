@@ -24,6 +24,7 @@ import Alert from "@mui/material/Alert";
 //Importing from directory
 import "./Tasks.css";
 import bitmapImg from "../img/Bitmap.jpg";
+import { display } from "@mui/system";
 
 //Get All Tasks API Call
 const URL = "http://localhost:5000/task";
@@ -33,6 +34,8 @@ const fetchHandler = async () => {
 
 const Tasks = () => {
   const [input, setInput] = useState("");
+  const [reload, setReload] = useState(false);
+
   const [emptyInputError, setEmptyInputError] = useState(false);
   const [toggleList, setToggleList] = useState(true);
 
@@ -42,6 +45,10 @@ const Tasks = () => {
     fetchHandler().then((data) => setTasks(data.tasks));
   }, []);
 
+  useEffect(() => {
+    fetchHandler().then((data) => setTasks(data.tasks));
+  }, [reload]);
+
   const navigate = useNavigate();
 
   //Delete a Task
@@ -49,8 +56,7 @@ const Tasks = () => {
     await axios
       .delete(`http://localhost:5000/task/${value}`)
       .then((res) => res.data)
-      .then(() => navigate("/"))
-      .then(() => navigate("/tasks"));
+      .then(() => setReload(!reload));
   };
 
   //Change Completion Status || Update Task
@@ -87,8 +93,7 @@ const Tasks = () => {
           task_Name: String(input),
         })
         .then((res) => res.data)
-        .then(() => navigate("/"))
-        .then(() => navigate("/tasks"));
+        .then(() => setReload(!reload));
     } else {
       setEmptyInputError(true);
     }
@@ -96,14 +101,13 @@ const Tasks = () => {
 
   //Add Task with AddTask Button
   const addTask = () => async () => {
-    if (input != null) {
+    if ((input != "") | null) {
       await axios
         .post("http://localhost:5000/task", {
           task_Name: String(input),
         })
         .then((res) => res.data)
-        .then(() => navigate("/"))
-        .then(() => navigate("/tasks"));
+        .then(() => setReload(!reload));
     } else {
       setEmptyInputError(true);
     }
@@ -119,7 +123,7 @@ const Tasks = () => {
         <Box display="flex" flexDirection="column" alignItems="center">
           <div
             className="avatar-person"
-            style={{ height: 60, width: 60, marginTop: "90px" }}
+            style={{ height: 60, width: 60, marginTop: "80px" }}
           >
             <Avatar
               className="avatar"
@@ -168,17 +172,17 @@ const Tasks = () => {
               component="nav"
               display="flex"
               position="relative"
-              key={1}
             >
               {tasks ? (
                 tasks.map((value) => (
-                  <>
+                  <React.Fragment key={value._id}>
                     <ListItem
                       key={value._id}
                       sx={{ maxHeight: 40, padding: 2 }}
                       secondaryAction={
                         <IconButton
                           edge="end"
+                          data-testid="delete"
                           aria-label="Delete"
                           onClick={deleteItem(value._id)}
                         >
@@ -219,7 +223,7 @@ const Tasks = () => {
                       </ListItemButton>
                     </ListItem>
                     <Divider />
-                  </>
+                  </React.Fragment>
                 ))
               ) : (
                 <></>
@@ -249,13 +253,14 @@ const Tasks = () => {
               Add New Task
             </Button>
           </div>
-          <br />
           {emptyInputError === true ? (
-            <div className="error">
-              <Alert testid="error" severity="error">
+              <Alert
+                variant="filled"
+                severity="error"
+                style={{zIndex: 1, maxHeight: 30, marginTop: 3}}
+              >
                 Enter Task Name
               </Alert>
-            </div>
           ) : (
             <div />
           )}
