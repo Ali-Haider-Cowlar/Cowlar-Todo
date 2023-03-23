@@ -1,11 +1,11 @@
 .backgroundImage {
   background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.1)),
     url(../img/Background.jpeg);
-  position: absolute;
   opacity: 1;
   background-size: cover;
+  position: fixed;
   background-position: center center;
-  height: 92vh;
+  height: 100vh;
   width: 100vw;
 }
 
@@ -21,7 +21,7 @@ Button.addTaskButton {
   height: "100%";
   width: "100%";
   border: 2px solid #555;
-  filter: blur(1px);
+  filter: blur(0.6px);
 }
 
 .paper {

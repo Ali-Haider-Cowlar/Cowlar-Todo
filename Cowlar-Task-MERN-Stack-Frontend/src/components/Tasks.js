@@ -169,7 +169,10 @@ const Tasks = () => {
 
   return (
     <div>
+      {/*Background Image*/}
       <div className="backgroundImage" />
+
+      {/*Displaying toasts for 5 seconds*/}
       <ToastContainer
         position="bottom-right"
         autoClose={5000}
@@ -184,6 +187,7 @@ const Tasks = () => {
       />
 
       <div>
+        {/*Profile Picture old man*/}
         <Box display="flex" flexDirection="column" alignItems="center">
           <div
             className="avatar-person"
@@ -201,6 +205,8 @@ const Tasks = () => {
           </div>
           <br />
           <br />
+
+          {/*To do today component*/}
           <Paper
             component="form"
             className="paper"
@@ -227,6 +233,7 @@ const Tasks = () => {
             </IconButton>
           </Paper>
 
+          {/*List Component*/}
           <br />
           {toggleList === true ? (
             <List
@@ -251,10 +258,12 @@ const Tasks = () => {
                           aria-label="Delete"
                           onClick={deleteItem(value._id)}
                         >
+                          {/*Delete Button*/}
                           <DragIndicatorIcon />
                         </IconButton>
                       }
                     >
+                      {/*Checkbox*/}
                       <ListItemButton
                         onClick={changeStatus(value)}
                         dense
@@ -265,6 +274,8 @@ const Tasks = () => {
                       >
                         {value.completed === true ? (
                           <ListItemIcon className="round">
+                            {/*Checkbox when checked*/}
+
                             <Checkbox
                               label="CheckCircleIcon"
                               icon={
@@ -276,6 +287,7 @@ const Tasks = () => {
                           </ListItemIcon>
                         ) : (
                           <ListItemIcon className="round">
+                            {/*Checkbox when Unchecked*/}
                             <Checkbox
                               label="CheckCircleIcon"
                               icon={
@@ -287,6 +299,7 @@ const Tasks = () => {
                           </ListItemIcon>
                         )}
 
+                        {/*Text part of each task*/}
                         <ListItemText
                           className="ListItemText"
                           id={value._id}
@@ -300,6 +313,8 @@ const Tasks = () => {
                 ))
               ) : (
                 <div style={{ textAlign: "center" }}>
+                  {/*React Spinner for Loading*/}
+
                   <ColorRing
                     visible={true}
                     height="100"
@@ -324,6 +339,7 @@ const Tasks = () => {
 
           <br />
           <div>
+            {/*Add task button*/}
             <Button
               data-testid="taskButton"
               className="addTaskButton"
@@ -342,6 +358,8 @@ const Tasks = () => {
               Add New Task
             </Button>
           </div>
+
+          {/*Error Alert*/}
           {emptyInputError === true ? (
             <Alert
               severity="error"

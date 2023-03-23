@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 
+//Material UI
 import { Button, Typography, Box } from "@mui/material";
 import { Link } from "react-router-dom";
 import Table from "@mui/material/Table";
@@ -11,7 +12,10 @@ import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 import axios from "axios";
 import moment from "moment";
+//Importing CSS
+import "./Home.css";
 
+//Get All Tasks API Call
 const URL = "http://localhost:5000/task";
 const fetchHandler = async () => {
   return await axios.get(URL).then((res) => res.data);
@@ -25,9 +29,11 @@ const Home = () => {
 
   return (
     <>
+      {/*Background Image*/}
       <div className="backgroundImage">
         <div>
           <Box display="flex" flexDirection="column" alignItems="center">
+            {/*View All Tasks Button*/}
             <Button
               LinkComponent={Link}
               to="/tasks"
@@ -47,9 +53,19 @@ const Home = () => {
           </Box>
         </div>
 
-        <div style={{ margin: 100, marginTop: 20 }}>
+        {/*View All Tasks Table*/}
+        <div
+          className="Table"
+          style={{
+            margin: 100,
+            marginTop: 20,
+            Height: 200,
+            maxHeight: 425,
+            overflowY: "scroll",
+          }}
+        >
           <TableContainer component={Paper}>
-            <Table sx={{ minWidth: 650 }} aria-label="simple table">
+            <Table aria-label="simple table">
               <TableHead style={{ backgroundColor: "#232F3D" }}>
                 <TableRow>
                   <TableCell style={{ color: "white" }} align="left">
