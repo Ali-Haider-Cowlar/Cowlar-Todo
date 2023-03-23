@@ -37,9 +37,6 @@ module.exports.getById = async (req, res, next) => {
 module.exports.addTask = async (req, res, next) => {
 	const { task_Name, completed, completed_Time } = req.body;
 	let task;
-
-	console.log(task_Name)
-
 	try {
 		task = new Task({
 			task_Name,
