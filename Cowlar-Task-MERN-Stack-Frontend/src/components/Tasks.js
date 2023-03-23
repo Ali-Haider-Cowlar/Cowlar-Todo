@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
+
 //Material UI
 import List from "@mui/material/List";
 import ListItem from "@mui/material/ListItem";
@@ -16,10 +16,16 @@ import InputBase from "@mui/material/InputBase";
 import MenuIcon from "@mui/icons-material/Menu";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import RadioButtonUncheckedIcon from "@mui/icons-material/RadioButtonUnchecked";
-import CheckCircleIcon from "@mui/icons-material/CheckCircle";
 import Divider from "@mui/material/Divider";
 import Button from "@mui/material/Button";
 import Alert from "@mui/material/Alert";
+
+//React Icons
+import { HiCheckCircle } from "react-icons/hi";
+
+//Toast React
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 //Importing from directory
 import "./Tasks.css";
@@ -48,14 +54,13 @@ const Tasks = () => {
     fetchHandler().then((data) => setTasks(data.tasks));
   }, [reload]);
 
-  const navigate = useNavigate();
-
   //Delete a Task
   const deleteItem = (value) => async () => {
     await axios
       .delete(`http://localhost:5000/task/${value}`)
       .then((res) => res.data)
       .then(() => setReload(!reload));
+    showToastMessageDelete();
   };
 
   //Change Completion Status || Update Task
@@ -73,8 +78,7 @@ const Tasks = () => {
         completed_Time: Date.now(),
       })
       .then((res) => res.data)
-      .then(() => navigate("/"))
-      .then(() => navigate("/tasks"));
+      .then(() => setReload(!reload));
   };
 
   //Update Input useState
@@ -86,14 +90,16 @@ const Tasks = () => {
   //Add Task with Enter Key
   const onSubmit = async (event) => {
     event.preventDefault();
-    if (input != null) {
+    if ((input !== "") | null) {
       await axios
         .post("http://localhost:5000/task", {
           task_Name: String(input),
         })
         .then((res) => res.data)
         .then(() => setReload(!reload));
+      showToastMessageAdd();
     } else {
+      showToastMessageError();
       setEmptyInputError(true);
     }
   };
@@ -107,9 +113,53 @@ const Tasks = () => {
         })
         .then((res) => res.data)
         .then(() => setReload(!reload));
+      showToastMessageAdd();
     } else {
+      showToastMessageError();
       setEmptyInputError(true);
     }
+  };
+
+  //Toast Message Success
+  const showToastMessageAdd = () => {
+    toast.success("🎯 Task Added! 🐄", {
+      position: "bottom-right",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "light",
+    });
+  };
+
+  //Delete Toast
+  const showToastMessageDelete = () => {
+    toast.success("🗑️ Task Deleted! 🐄", {
+      position: "bottom-right",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "light",
+    });
+  };
+
+  //Error Toast
+  const showToastMessageError = () => {
+    toast.error("Task Name Missing! 🐄", {
+      position: "bottom-right",
+      autoClose: 3000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "colored",
+    });
   };
 
   //------------------------------------------------------------------------------------------------------------------
@@ -117,6 +167,18 @@ const Tasks = () => {
   return (
     <div>
       <div className="backgroundImage" />
+      <ToastContainer
+        position="bottom-right"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="light"
+      />
 
       <div>
         <Box display="flex" flexDirection="column" alignItems="center">
@@ -148,6 +210,7 @@ const Tasks = () => {
               <MenuIcon />
             </IconButton>
             <InputBase
+              className="nputBase"
               sx={{ ml: 1, flex: 1, color: "#595554" }}
               placeholder="To do today"
               inputProps={{ "aria-label": "To do today" }}
@@ -190,7 +253,6 @@ const Tasks = () => {
                       }
                     >
                       <ListItemButton
-                        role={undefined}
                         onClick={changeStatus(value)}
                         dense
                         sx={{
@@ -199,17 +261,25 @@ const Tasks = () => {
                         }}
                       >
                         {value.completed === true ? (
-                          <ListItemIcon>
+                          <ListItemIcon className="round">
                             <Checkbox
                               label="CheckCircleIcon"
-                              icon={<CheckCircleIcon />}
+                              icon={
+                                <HiCheckCircle
+                                  style={{ fontSize: 22, color: "#948c77" }}
+                                />
+                              }
                             />
                           </ListItemIcon>
                         ) : (
-                          <ListItemIcon>
+                          <ListItemIcon className="round">
                             <Checkbox
                               label="CheckCircleIcon"
-                              icon={<RadioButtonUncheckedIcon />}
+                              icon={
+                                <RadioButtonUncheckedIcon
+                                  style={{ fontSize: 20 }}
+                                />
+                              }
                             />
                           </ListItemIcon>
                         )}
@@ -218,6 +288,7 @@ const Tasks = () => {
                           className="ListItemText"
                           id={value._id}
                           primary={value.task_Name}
+                          style={{ marginLeft: -10 }}
                         />
                       </ListItemButton>
                     </ListItem>
@@ -253,13 +324,17 @@ const Tasks = () => {
             </Button>
           </div>
           {emptyInputError === true ? (
-              <Alert
-                variant="filled"
-                severity="error"
-                style={{zIndex: 1, maxHeight: 30, marginTop: 3}}
-              >
-                Enter Task Name
-              </Alert>
+            <Alert
+              severity="error"
+              style={{
+                zIndex: 1,
+                marginTop: 5,
+                backgroundColor: "transparent",
+                color: "#ff6666",
+              }}
+            >
+              Enter Task Name
+            </Alert>
           ) : (
             <div />
           )}

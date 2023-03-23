@@ -18,6 +18,7 @@ app.use("/task", router); // localhost:5000/task
 app.use("/users", userrouter);
 
 //Database Connection
+//**Note** Directly Declaring the env variables here for testing 
 mongoose
 	.connect(
 		"mongodb+srv://Cowlar_Todo1:cowlar123@cluster0.lpjkg2n.mongodb.net/test",
