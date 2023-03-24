@@ -12,7 +12,7 @@
   <a href="#dart-about">About</a> &#xa0; | &#xa0;
   <a href="#rocket-main-technologies">Technologies</a> &#xa0; | &#xa0;
   <a href="#white_check_mark-requirements">Requirements</a> &#xa0; | &#xa0;
-  <a href="#checkered_flag-starting">Starting</a> &#xa0; 
+  <a href="#video_game-scripts">Scripts</a> &#xa0; 
 </p>
 
 ## :dart: About ##
@@ -21,6 +21,20 @@ A todo app designed to help you stay organized and on top of your tasks. Now, yo
 With the user-friendly interface and intuitive features, you can quickly add new tasks and mark them as completed once you've finished.
 So why wait? Start using the **Cowlar Todo App** today and discover the power of a well-organized life!
 
+<details>
+  <summary>View features</summary>
+
+  ###
+
+  * Add Task with "Add New Task" button
+  * Add Task with Enter Key
+  * Update Task Status
+  * Delete Task
+  * Error Alert
+  * React Spinner loader
+  * React Toastify
+  
+</details>
 
 
 ## :rocket: Main Technologies ##
@@ -124,7 +138,7 @@ $ Docker-compose up -d
 ## :video_game: Scripts
 
 - `dev`: starts the application at `localhost:3000`
-- `build`: creates an optimized production build of application
+- `build`: creates an optimized build of application
 - `start`: starts the application in production mode at `localhost:3000` (have run the build before)
 - `test`: run the tests
 - `lint`: run eslint in /src
