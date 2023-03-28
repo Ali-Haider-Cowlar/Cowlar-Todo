@@ -1,56 +1,39 @@
-const Task = require("../model/Task");
-
-//----------------------------------------------------------------------------------------------
+const taskService = require("../services/task.service");
 
 module.exports.getAllTasks = async (req, res) => {
-  let tasks;
   try {
-    tasks = await Task.find();
+    const tasks = await taskService.getAllTasks();
+    return res.status(200).json({ tasks });
   } catch (err) {
     console.log(err);
+    return res.status(500).json({ message: "Internal Server Error" });
   }
-
-  if (!tasks) {
-    return res.status(404).json({ message: "No tasks found" });
-  }
-  return res.status(200).json({ tasks });
 };
 
 //----------------------------------------------------------------------------------------------
 
 module.exports.getById = async (req, res) => {
   const id = req.params.id;
-  let task;
   try {
-    task = await Task.findById(id);
+    const task = await taskService.getTaskById(id);
+    return res.status(200).json({ task });
   } catch (err) {
     console.log(err);
+    return res.status(500).json({ message: "Internal Server Error" });
   }
-  if (!task) {
-    return res.status(404).json({ message: "No Task found" });
-  }
-  return res.status(200).json({ task });
 };
 
 //----------------------------------------------------------------------------------------------
 
 module.exports.addTask = async (req, res) => {
   const { taskName, completed, completedTime } = req.body;
-  let task;
   try {
-    task = new Task({
-      taskName,
-      completed,
-      completedTime,
-    });
-    await task.save();
+    const task = await taskService.addTask(taskName, completed, completedTime);
+    return res.status(201).json({ task });
   } catch (err) {
     console.log(err);
+    return res.status(500).json({ message: "Internal Server Error" });
   }
-  if (!task) {
-    return res.status(500).json({ message: "Unable To Add" });
-  }
-  return res.status(201).json({ task });
 };
 
 //----------------------------------------------------------------------------------------------
@@ -58,35 +41,31 @@ module.exports.addTask = async (req, res) => {
 module.exports.updateTask = async (req, res) => {
   const id = req.params.id;
   const { taskName, completed, completedTime } = req.body;
-  let task;
   try {
-    task = await Task.findByIdAndUpdate(id, {
+    const task = await taskService.updateTask(
+      id,
       taskName,
       completed,
-      completedTime,
-    });
-    task = await task.save();
+      completedTime
+    );
+    return res.status(200).json({ task });
   } catch (err) {
     console.log(err);
+    return res.status(500).json({ message: "Internal Server Error" });
   }
-  if (!task) {
-    return res.status(404).json({ message: "Unable To Update By this ID" });
-  }
-  return res.status(200).json({ task });
 };
 
 //----------------------------------------------------------------------------------------------
 
 module.exports.deleteTask = async (req, res) => {
   const id = req.params.id;
-  let task;
   try {
-    task = await Task.findByIdAndRemove(id);
+    await taskService.deleteTask(id);
+    return res.status(200).json({ message: "Task Successfully Deleted" });
   } catch (err) {
     console.log(err);
+    return res.status(500).json({ message: "Internal Server Error" });
   }
-  if (!task) {
-    return res.status(404).json({ message: "Unable To Delete By this ID" });
-  }
-  return res.status(200).json({ message: "Task Successfully Deleted" });
 };
+
+//----------------------------------------------------------------------------------------------
