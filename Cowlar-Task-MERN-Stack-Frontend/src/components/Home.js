@@ -16,13 +16,19 @@ import moment from "moment";
 import "./Home.css";
 
 //Get All Tasks API Call
-const URL = "http://localhost:5000/task";
 const fetchHandler = async () => {
-  return await axios.get(URL).then((res) => res.data);
+  try {
+    const res = await axios.get(URL);
+    return res.data;
+  } catch (error) {
+    console.log(error);
+  }
 };
 
 const Home = () => {
   const [tasks, setTasks] = useState();
+
+  //Fetching Data
   useEffect(() => {
     fetchHandler().then((data) => setTasks(data.tasks));
   }, []);
@@ -89,13 +95,11 @@ const Home = () => {
                       key={row._id}
                       sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
                     >
-                      <TableCell component="th" scope="row">
-                        {row.task_Name}
-                      </TableCell>
+                      <TableCell>{row.taskName}</TableCell>
 
                       <TableCell align="center">
                         {" "}
-                        {moment(` ${row.creation_Time}`).format(
+                        {moment(` ${row.creationTime}`).format(
                           "MMM Do YYYY, h:mm a"
                         )}
                       </TableCell>
@@ -107,7 +111,7 @@ const Home = () => {
                       {row.completed === true ? (
                         <TableCell align="center">
                           {" "}
-                          {moment(` ${row.completed_Time}`).format(
+                          {moment(` ${row.completedTime}`).format(
                             "MMM Do YYYY, h:mm a"
                           )}
                         </TableCell>
@@ -117,7 +121,7 @@ const Home = () => {
                     </TableRow>
                   ))
                 ) : (
-                  <div />
+                  <></>
                 )}
               </TableBody>
             </Table>

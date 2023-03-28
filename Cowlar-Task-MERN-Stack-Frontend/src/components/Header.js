@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { AppBar, Tab, Tabs, Toolbar, Typography } from "@mui/material";
 import { NavLink } from "react-router-dom";
-import SvgIcon from '@mui/material/SvgIcon';
+import SvgIcon from "@mui/material/SvgIcon";
 
 function HomeIcon(props) {
   return (
@@ -13,15 +13,15 @@ function HomeIcon(props) {
 
 const Header = () => {
   const [value, setValue] = useState(0);
-  
+
   return (
     <div>
+      {/*Navbar*/}
       <AppBar sx={{ backgroundColor: "#232F3D" }} position="sticky">
         <Toolbar>
           <NavLink to="/" style={{ color: "white" }}>
             <Typography>
-            <HomeIcon color="primary" />
-
+              <HomeIcon color="primary" />
             </Typography>
           </NavLink>
           <Tabs
@@ -31,9 +31,9 @@ const Header = () => {
             value={value}
             onChange={(e, val) => setValue(val)}
           >
-            <Tab LinkComponent={NavLink} to="/tasks" label="Tasks" />
-
-            <Tab LinkComponent={NavLink} to="/about" label="About Us" />
+            {/*Navigation to Components */}
+            <Tab LinkComponent={NavLink} to="/tasks" label="Tasks"/>
+            <Tab LinkComponent={NavLink} to="/about" label="About Us"/>
           </Tabs>
         </Toolbar>
       </AppBar>

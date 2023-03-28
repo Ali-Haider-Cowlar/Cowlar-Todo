@@ -1,9 +1,12 @@
+require('dotenv').config();
 const express = require("express");
 const mongoose = require("mongoose");
-const router = require("./routes/task-routes");
-const userrouter = require("./routes/task-routes");
+const taskRoutes = require("./routes/task-routes");
 
-const portNumber = 5000;
+const connectDB = require('./config/dbConn');
+const PORT = process.env.MONGO_PORT || 5000;
+
+connectDB();
 
 const cors = require("cors");
 const app = express();
@@ -13,19 +16,9 @@ app.use(express.json());
 app.use(cors());
 
 //Routes
-app.use("/task", router); // localhost:5000/task
-app.use("/users", userrouter);
+app.use("/task", taskRoutes); // localhost:5000/task
 
 //Database Connection
-//**Note** Directly Declaring the env variables here for testing 
-mongoose
-	.connect(
-		"mongodb+srv://Cowlar_Todo1:cowlar123@cluster0.lpjkg2n.mongodb.net/test",
-	)
-	.then(() => console.log("Connected To Database"))
-	.then(() => {
-		app.listen(portNumber, "0.0.0.0", () => {
-			console.log(`Express web server started: http://0.0.0.0:${portNumber}`);
-		  });
-	})
-	.catch((err) => console.log(err));
+mongoose.connection.once('open', () => {
+    app.listen(PORT, () => console.log(`Connected to MongoDB: Server running on port ${PORT}`));
+});

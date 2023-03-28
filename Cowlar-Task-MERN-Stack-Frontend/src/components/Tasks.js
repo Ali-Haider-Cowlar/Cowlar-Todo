@@ -37,7 +37,12 @@ import bitmapImg from "../img/Bitmap.jpg";
 //Get All Tasks API Call
 const URL = "http://localhost:5000/task";
 const fetchHandler = async () => {
-  return await axios.get(URL).then((res) => res.data);
+  try {
+    const res = await axios.get(URL);
+    return res.data;
+  } catch (error) {
+    console.log(error);
+  }
 };
 
 const Tasks = () => {
@@ -49,21 +54,21 @@ const Tasks = () => {
 
   //Get Array of all Tasks
   const [tasks, setTasks] = useState();
-  useEffect(() => {
-    fetchHandler().then((data) => setTasks(data.tasks));
-  }, []);
 
+  //Fetching Data
   useEffect(() => {
     fetchHandler().then((data) => setTasks(data.tasks));
   }, [reload]);
 
   //Delete a Task
   const deleteItem = (value) => async () => {
-    await axios
-      .delete(`http://localhost:5000/task/${value}`)
-      .then((res) => res.data)
-      .then(() => setReload(!reload));
-    showToastMessageDelete();
+    try {
+      await axios.delete(`http://localhost:5000/task/${value}`);
+      setReload(!reload);
+      showToastMessageDelete();
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   //Change Completion Status || Update Task
@@ -74,14 +79,16 @@ const Tasks = () => {
     } else {
       changeStatus = true;
     }
-    await axios
-      .put(`http://localhost:5000/task/${value._id}`, {
-        task_Name: value.task_Name,
+    try {
+      await axios.put(`http://localhost:5000/task/${value._id}`, {
+        taskName: value.taskName,
         completed: changeStatus,
-        completed_Time: Date.now(),
-      })
-      .then((res) => res.data)
-      .then(() => setReload(!reload));
+        completedTime: Date.now(),
+      });
+      setReload(!reload);
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   //Update Input useState
@@ -93,33 +100,37 @@ const Tasks = () => {
   //Add Task with Enter Key
   const onSubmit = async (event) => {
     event.preventDefault();
-    if ((input !== "") | null) {
-      await axios
-        .post("http://localhost:5000/task", {
-          task_Name: String(input),
-        })
-        .then((res) => res.data)
-        .then(() => setReload(!reload));
-      showToastMessageAdd();
-    } else {
-      showToastMessageError();
-      setEmptyInputError(true);
+    try {
+      if ((input !== "") | null) {
+        await axios.post("http://localhost:5000/task", {
+          taskName: String(input),
+        });
+        setReload(!reload);
+        showToastMessageAdd();
+      } else {
+        showToastMessageError();
+        setEmptyInputError(true);
+      }
+    } catch (error) {
+      console.log(error);
     }
   };
 
   //Add Task with AddTask Button
   const addTask = () => async () => {
-    if ((input !== "") | null) {
-      await axios
-        .post("http://localhost:5000/task", {
-          task_Name: String(input),
-        })
-        .then((res) => res.data)
-        .then(() => setReload(!reload));
-      showToastMessageAdd();
-    } else {
-      showToastMessageError();
-      setEmptyInputError(true);
+    try {
+      if ((input !== "") | null) {
+        await axios.post("http://localhost:5000/task", {
+          taskName: String(input),
+        });
+        setReload(!reload);
+        showToastMessageAdd();
+      } else {
+        showToastMessageError();
+        setEmptyInputError(true);
+      }
+    } catch (error) {
+      console.log(error);
     }
   };
 
@@ -303,7 +314,7 @@ const Tasks = () => {
                         <ListItemText
                           className="ListItemText"
                           id={value._id}
-                          primary={value.task_Name}
+                          primary={value.taskName}
                           style={{ marginLeft: -10 }}
                         />
                       </ListItemButton>

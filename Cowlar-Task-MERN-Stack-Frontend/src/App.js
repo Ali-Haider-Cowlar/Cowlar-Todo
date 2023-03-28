@@ -13,7 +13,7 @@ function App() {
       </header>
       <main>
         <Routes>
-          <Route path="/" element={<Home />} exact />       
+          <Route path="/" element={<Home />} exact />
           <Route path="/about" element={<About />} exact />
           <Route path="/tasks" element={<Tasks />} exact />
         </Routes>
