@@ -16,6 +16,8 @@ import moment from "moment";
 import "./Home.css";
 
 //Get All Tasks API Call
+const URL = "http://localhost:5000/task";
+
 const fetchHandler = async () => {
   try {
     const res = await axios.get(URL);
@@ -29,6 +31,7 @@ const Home = () => {
   const [tasks, setTasks] = useState();
 
   //Fetching Data
+
   useEffect(() => {
     fetchHandler().then((data) => setTasks(data.tasks));
   }, []);
