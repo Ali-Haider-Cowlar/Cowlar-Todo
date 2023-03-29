@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import axios from "axios";
 
 //Material UI
 import List from "@mui/material/List";
@@ -9,7 +8,6 @@ import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
 import Checkbox from "@mui/material/Checkbox";
 import IconButton from "@mui/material/IconButton";
-import DragIndicatorIcon from "@mui/icons-material/DragIndicator";
 import { Avatar, Box } from "@mui/material";
 import Paper from "@mui/material/Paper";
 import InputBase from "@mui/material/InputBase";
@@ -22,6 +20,7 @@ import Alert from "@mui/material/Alert";
 
 //React Icons
 import { HiCheckCircle } from "react-icons/hi";
+import { MdDelete } from "react-icons/md";
 
 //Toast React
 import { ToastContainer, toast } from "react-toastify";
@@ -34,36 +33,26 @@ import { ColorRing } from "react-loader-spinner";
 import "./Tasks.css";
 import bitmapImg from "../img/Bitmap.jpg";
 
-//Get All Tasks API Call
-const URL = "http://localhost:5000/task";
-const fetchHandler = async () => {
-  try {
-    const res = await axios.get(URL);
-    return res.data;
-  } catch (error) {
-    console.log(error);
-  }
-};
+//Task Services
+import { deleteTask, updateTask, addTask, getAllTasks } from "./TasksService";
 
 const Tasks = () => {
   const [input, setInput] = useState("");
   const [reload, setReload] = useState(false);
-
   const [emptyInputError, setEmptyInputError] = useState(false);
   const [toggleList, setToggleList] = useState(true);
-
   //Get Array of all Tasks
   const [tasks, setTasks] = useState();
 
   //Fetching Data
   useEffect(() => {
-    fetchHandler().then((data) => setTasks(data.tasks));
+    getAllTasks().then((data) => setTasks(data.tasks));
   }, [reload]);
 
   //Delete a Task
   const deleteItem = (value) => async () => {
     try {
-      await axios.delete(`http://localhost:5000/task/${value}`);
+      await deleteTask(value);
       setReload(!reload);
       showToastMessageDelete();
     } catch (error) {
@@ -80,7 +69,7 @@ const Tasks = () => {
       changeStatus = true;
     }
     try {
-      await axios.put(`http://localhost:5000/task/${value._id}`, {
+      await updateTask(value._id, {
         taskName: value.taskName,
         completed: changeStatus,
         completedTime: Date.now(),
@@ -98,13 +87,11 @@ const Tasks = () => {
   };
 
   //Add Task with Enter Key
-  const onSubmit = async (event) => {
+  const onSubmit = (event) => {
     event.preventDefault();
     try {
       if ((input !== "") | null) {
-        await axios.post("http://localhost:5000/task", {
-          taskName: String(input),
-        });
+        addTask({ taskName: String(input) });
         setReload(!reload);
         showToastMessageAdd();
       } else {
@@ -117,12 +104,10 @@ const Tasks = () => {
   };
 
   //Add Task with AddTask Button
-  const addTask = () => async () => {
+  const addTaskButton = () => async () => {
     try {
       if ((input !== "") | null) {
-        await axios.post("http://localhost:5000/task", {
-          taskName: String(input),
-        });
+        addTask({ taskName: String(input) });
         setReload(!reload);
         showToastMessageAdd();
       } else {
@@ -230,9 +215,9 @@ const Tasks = () => {
               <MenuIcon />
             </IconButton>
             <InputBase
-              className="nputBase"
+              className="inputBase"
               sx={{ ml: 1, flex: 1, color: "#595554" }}
-              placeholder="To do today"
+              placeholder="Type here"
               inputProps={{ "aria-label": "To do today" }}
             />
             <IconButton
@@ -270,7 +255,7 @@ const Tasks = () => {
                           onClick={deleteItem(value._id)}
                         >
                           {/*Delete Button*/}
-                          <DragIndicatorIcon />
+                          <MdDelete style={{ fontSize: 22 }} />
                         </IconButton>
                       }
                     >
@@ -364,7 +349,7 @@ const Tasks = () => {
                   color: "white",
                 },
               }}
-              onClick={addTask()}
+              onClick={addTaskButton()}
             >
               Add New Task
             </Button>

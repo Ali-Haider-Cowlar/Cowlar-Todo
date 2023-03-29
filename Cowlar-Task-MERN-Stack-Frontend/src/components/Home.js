@@ -10,30 +10,19 @@ import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
-import axios from "axios";
 import moment from "moment";
 //Importing CSS
 import "./Home.css";
 
 //Get All Tasks API Call
-const URL = "http://localhost:5000/task";
-
-const fetchHandler = async () => {
-  try {
-    const res = await axios.get(URL);
-    return res.data;
-  } catch (error) {
-    console.log(error);
-  }
-};
+import { getAllTasks } from "./TasksService";
 
 const Home = () => {
   const [tasks, setTasks] = useState();
 
   //Fetching Data
-
   useEffect(() => {
-    fetchHandler().then((data) => setTasks(data.tasks));
+    getAllTasks().then((data) => setTasks(data.tasks));
   }, []);
 
   return (

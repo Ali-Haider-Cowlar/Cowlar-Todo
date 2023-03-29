@@ -3,7 +3,6 @@ import { BrowserRouter } from "react-router-dom";
 import Tasks from "./Tasks";
 import userEvent from "@testing-library/user-event";
 
-
 //Test for Displaying the Input Field
 test("renders input field", () => {
   render(
@@ -11,7 +10,7 @@ test("renders input field", () => {
       <Tasks />
     </BrowserRouter>
   );
-  const inputElement = screen.getByPlaceholderText("To do today");
+  const inputElement = screen.getByPlaceholderText("Type here");
   expect(inputElement).toBeInTheDocument();
 });
 
@@ -60,6 +59,6 @@ test("To do input should be empty", () => {
       <Tasks />
     </BrowserRouter>
   );
-  const InputEl = screen.getByPlaceholderText(/To do today/i);
+  const InputEl = screen.getByPlaceholderText(/Type here/i);
   expect(InputEl.value).toBe("");
 });

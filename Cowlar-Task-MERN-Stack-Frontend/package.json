@@ -47,5 +47,8 @@
       "last 1 safari version"
     ]
   },
-  "proxy": "http://express-container:5000"
+  "proxy": "http://express-container:5000",
+  "devDependencies": {
+    "tailwindcss": "^3.3.0"
+  }
 }
