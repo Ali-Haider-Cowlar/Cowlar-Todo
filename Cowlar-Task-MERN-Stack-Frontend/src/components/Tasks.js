@@ -185,7 +185,7 @@ const Tasks = () => {
       <div>
         {/*Profile Picture old man*/}
         <Box display="flex" flexDirection="column" alignItems="center">
-          <div className="avatar-person h-20 w-20 mt-16">
+          <div className="avatar-person h-20 w-20 mt-16 ml-3">
             <Avatar
               className="avatar"
               alt="Ali Haider"
