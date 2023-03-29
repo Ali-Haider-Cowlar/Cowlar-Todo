@@ -28,7 +28,7 @@ const Home = () => {
   return (
     <>
       {/*Background Image*/}
-      <div className="backgroundImage">
+      <div className="backgroundImage opacity-100 bg-cover fixed bg-center h-screen w-screen">
         <div>
           <Box display="flex" flexDirection="column" alignItems="center">
             {/*View All Tasks Button*/}
@@ -52,73 +52,68 @@ const Home = () => {
         </div>
 
         {/*View All Tasks Table*/}
-        <div
-          className="Table"
-          style={{
-            margin: 100,
-            marginTop: 20,
-            Height: 200,
-            maxHeight: 425,
-            overflowY: "scroll",
-          }}
-        >
-          <TableContainer component={Paper}>
-            <Table aria-label="simple table">
-              <TableHead style={{ backgroundColor: "#232F3D" }}>
-                <TableRow>
-                  <TableCell style={{ color: "white" }} align="left">
-                    Task Name{" "}
-                  </TableCell>
-                  <TableCell style={{ color: "white" }} align="center">
-                    Creation Time
-                  </TableCell>
-                  <TableCell style={{ color: "white" }} align="center">
-                    Completion Status
-                  </TableCell>
-                  <TableCell style={{ color: "white" }} align="center">
-                    Completion Time
-                  </TableCell>
-                </TableRow>
-              </TableHead>
-              <TableBody>
-                {tasks ? (
-                  tasks.map((row) => (
-                    <TableRow
-                      key={row._id}
-                      sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
-                    >
-                      <TableCell>{row.taskName}</TableCell>
+        <Box display="flex" flexDirection="column" alignItems="center">
+          <div className="Table m-100 mt-8 h-100 w-auto max-h-96 overflow-y-scroll ">
+            <TableContainer component={Paper}>
+              <Table aria-label="simple table">
+                <TableHead style={{ backgroundColor: "#232F3D" }}>
+                  <TableRow>
+                    <TableCell style={{ color: "white" }} align="left">
+                      Task Name{" "}
+                    </TableCell>
+                    <TableCell style={{ color: "white" }} align="center">
+                      Creation Time
+                    </TableCell>
+                    <TableCell style={{ color: "white" }} align="center">
+                      Completion Status
+                    </TableCell>
+                    <TableCell style={{ color: "white" }} align="center">
+                      Completion Time
+                    </TableCell>
+                  </TableRow>
+                </TableHead>
+                <TableBody>
+                  {tasks ? (
+                    tasks.map((row) => (
+                      <TableRow
+                        key={row._id}
+                        sx={{
+                          "&:last-child td, &:last-child th": { border: 0 },
+                        }}
+                      >
+                        <TableCell>{row.taskName}</TableCell>
 
-                      <TableCell align="center">
-                        {" "}
-                        {moment(` ${row.creationTime}`).format(
-                          "MMM Do YYYY, h:mm a"
-                        )}
-                      </TableCell>
-                      {row.completed === true ? (
-                        <TableCell align="center">{"Yes"}</TableCell>
-                      ) : (
-                        <TableCell align="center">{"Pending"}</TableCell>
-                      )}
-                      {row.completed === true ? (
                         <TableCell align="center">
                           {" "}
-                          {moment(` ${row.completedTime}`).format(
+                          {moment(` ${row.creationTime}`).format(
                             "MMM Do YYYY, h:mm a"
                           )}
                         </TableCell>
-                      ) : (
-                        <TableCell align="center">{"Pending"}</TableCell>
-                      )}
-                    </TableRow>
-                  ))
-                ) : (
-                  <></>
-                )}
-              </TableBody>
-            </Table>
-          </TableContainer>
-        </div>
+                        {row.completed === true ? (
+                          <TableCell align="center">{"Yes"}</TableCell>
+                        ) : (
+                          <TableCell align="center">{"Pending"}</TableCell>
+                        )}
+                        {row.completed === true ? (
+                          <TableCell align="center">
+                            {" "}
+                            {moment(` ${row.completedTime}`).format(
+                              "MMM Do YYYY, h:mm a"
+                            )}
+                          </TableCell>
+                        ) : (
+                          <TableCell align="center">{"Pending"}</TableCell>
+                        )}
+                      </TableRow>
+                    ))
+                  ) : (
+                    <></>
+                  )}
+                </TableBody>
+              </Table>
+            </TableContainer>
+          </div>
+        </Box>
       </div>
     </>
   );

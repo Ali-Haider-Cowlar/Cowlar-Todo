@@ -166,7 +166,7 @@ const Tasks = () => {
   return (
     <div>
       {/*Background Image*/}
-      <div className="backgroundImage" />
+      <div className="backgroundImage opacity-100 bg-cover fixed bg-center h-screen w-screen" />
 
       {/*Displaying toasts for 5 seconds*/}
       <ToastContainer
@@ -185,27 +185,22 @@ const Tasks = () => {
       <div>
         {/*Profile Picture old man*/}
         <Box display="flex" flexDirection="column" alignItems="center">
-          <div
-            className="avatar-person"
-            style={{ height: 60, width: 60, marginTop: "80px" }}
-          >
+          <div className="avatar-person h-20 w-20 mt-16">
             <Avatar
               className="avatar"
               alt="Ali Haider"
               src={bitmapImg}
               style={{
-                height: "100%",
-                width: "100%",
+                height: "80%",
+                width: "80%",
               }}
             />
           </div>
-          <br />
-          <br />
 
           {/*To do today component*/}
           <Paper
             component="form"
-            className="paper"
+            className="paper flex p-3 h-12 w-64 text-e9e3d7 mt-3"
             value={input}
             onChange={handleChange}
             onSubmit={onSubmit}
@@ -228,12 +223,13 @@ const Tasks = () => {
               <KeyboardArrowDownIcon />
             </IconButton>
           </Paper>
+          <br />
 
           {/*List Component*/}
-          <br />
           {toggleList === true ? (
             <List
-              className="list"
+              className="list  max-h-[15.5rem] min-h-0 min-w-0 w-64  bg-white rounded-3px p-0.2 
+              shadow-md opacity-90 overflow-y-scroll bg-gradient-to-b from-white to-f5f5f5"
               sx={{
                 padding: 0.2,
               }}
@@ -308,7 +304,7 @@ const Tasks = () => {
                   </React.Fragment>
                 ))
               ) : (
-                <div style={{ textAlign: "center" }}>
+                <div className="flex justify-center">
                   {/*React Spinner for Loading*/}
 
                   <ColorRing
@@ -358,13 +354,8 @@ const Tasks = () => {
           {/*Error Alert*/}
           {emptyInputError === true ? (
             <Alert
+              className="Alert z-10 mt-2 bg-transparent text-red-500"
               severity="error"
-              style={{
-                zIndex: 1,
-                marginTop: 5,
-                backgroundColor: "transparent",
-                color: "#ff6666",
-              }}
             >
               Enter Task Name
             </Alert>
