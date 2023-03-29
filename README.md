@@ -1,6 +1,6 @@
 <div align="center" id="top">
 
-<a href="https://ibb.co/m8dZM80"><img src="https://i.ibb.co/C24CT26/cowl.png" alt="cowl" border="0" /></a>
+<a href="https://ibb.co/RzcmJ4k"><img src="https://i.ibb.co/J5H4SFw/cowlar-avatar.png" alt="cowlar-avatar" border="0" /></a>
 </div>
 
 
