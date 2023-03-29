@@ -200,7 +200,7 @@ const Tasks = () => {
           {/*To do today component*/}
           <Paper
             component="form"
-            className="paper flex p-3 h-12 w-64 text-e9e3d7 mt-3"
+            className="paper flex p-3 h-12 w-64 text-e9e3d7 mt-3 mb-4"
             value={input}
             onChange={handleChange}
             onSubmit={onSubmit}
@@ -223,7 +223,6 @@ const Tasks = () => {
               <KeyboardArrowDownIcon />
             </IconButton>
           </Paper>
-          <br />
 
           {/*List Component*/}
           {toggleList === true ? (
@@ -329,12 +328,11 @@ const Tasks = () => {
             <div />
           )}
 
-          <br />
-          <div>
+          <div className="mt-4">
             {/*Add task button*/}
             <Button
               data-testid="taskButton"
-              className="addTaskButton"
+              className="addTaskButton "
               variant="contained"
               elevation={3}
               sx={{
